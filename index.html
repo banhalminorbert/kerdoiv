@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fókusz Oktatás – Visszajelzési lap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --red:       #C0392B;
+    --red-light: #f5e9e8;
+    --ink:       #1a1a1a;
+    --mid:       #555;
+    --rule:      #d4d0cb;
+    --bg:        #f8f6f2;
+    --white:     #ffffff;
+    --yes:       #2e7d32;
+    --no:        #b71c1c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--white);
+    border-bottom: 3px solid var(--red);
+    padding: 28px 0 0;
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 28px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .badge {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    white-space: nowrap;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .header-text h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1.2;
+  }
+  .header-text p {
+    margin-top: 8px;
+    color: var(--mid);
+    font-size: 13.5px;
+    max-width: 540px;
+  }
+
+  /* ── Body wrapper ── */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Intro card ── */
+  .intro {
+    background: var(--white);
+    border-left: 4px solid var(--red);
+    padding: 18px 22px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: var(--mid);
+  }
+  .intro strong { color: var(--ink); }
+
+  /* ── Section headings ── */
+  .q-block { margin-bottom: 36px; }
+  .q-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .q-num {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 2px;
+    margin-top: 1px;
+  }
+
+  /* ── Rating table ── */
+  .rating-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .rating-table thead th {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 8px 6px 10px;
+    text-align: center;
+    border-bottom: 2px solid var(--rule);
+  }
+  .rating-table thead th:first-child { text-align: left; }
+  .rating-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .rating-table tbody tr:last-child { border-bottom: none; }
+  .rating-table tbody td {
+    padding: 13px 6px;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .rating-table tbody td:first-child {
+    text-align: left;
+    font-size: 14.5px;
+    padding-right: 16px;
+  }
+  .sub-num {
+    color: var(--red);
+    font-weight: 600;
+    font-size: 13px;
+    margin-right: 6px;
+  }
+
+  /* emoji radio */
+  .rating-table input[type="radio"] { display: none; }
+  .rating-table label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    border: 2px solid transparent;
+  }
+  .rating-table input[type="radio"]:checked + label {
+    background: var(--red-light);
+    border-color: var(--red);
+    transform: scale(1.15);
+  }
+  .rating-table label:hover { background: #f0ece5; }
+
+  /* ── Text areas ── */
+  textarea {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--white);
+    resize: vertical;
+    transition: border-color .15s;
+  }
+  textarea:focus { outline: none; border-color: var(--red); }
+
+  /* ── Yes / No radio ── */
+  .yn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .yn-group input[type="radio"] { display: none; }
+  .yn-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14.5px;
+    background: var(--white);
+    transition: border-color .15s, background .15s;
+  }
+  .yn-group label::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rule);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: border-color .15s, background .15s;
+  }
+  .yn-group input[type="radio"]:checked + label {
+    border-color: var(--red);
+    background: var(--red-light);
+  }
+  .yn-group input[type="radio"]:checked + label::before {
+    border-color: var(--red);
+    background: var(--red);
+  }
+
+  /* ── Checkbox group (age / gender) ── */
+  .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .check-group input[type="checkbox"] { display: none; }
+  .check-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    background: var(--white);
+    transition: border-color .15s, background .15s;
+  }
+  .check-group label::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rule);
+    border-radius: 2px;
+    flex-shrink: 0;
+    transition: border-color .15s, background .15s;
+  }
+  .check-group input[type="checkbox"]:checked + label {
+    border-color: var(--red);
+    background: var(--red-light);
+  }
+  .check-group input[type="checkbox"]:checked + label::before {
+    border-color: var(--red);
+    background: var(--red);
+  }
+
+  /* ── Demography box ── */
+  .demo-box {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 28px 24px;
+    margin-bottom: 36px;
+  }
+  .demo-box h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .demo-section { margin-bottom: 20px; }
+  .demo-section:last-child { margin-bottom: 0; }
+  .demo-section h3 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  /* ── Submit ── */
+  .submit-wrap {
+    text-align: center;
+    margin-top: 10px;
+  }
+  button[type="submit"] {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 14px 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: .04em;
+    transition: background .15s, transform .1s;
+  }
+  button[type="submit"]:hover { background: #a93226; }
+  button[type="submit"]:active { transform: scale(.98); }
+
+  /* ── Success message ── */
+  #success {
+    display: none;
+    background: var(--white);
+    border-left: 4px solid var(--yes);
+    padding: 28px 32px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 32px;
+  }
+  #success h2 { font-family: 'Source Serif 4', serif; font-size: 22px; color: var(--yes); margin-bottom: 8px; }
+  #success p  { color: var(--mid); font-size: 14px; }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid var(--rule); margin: 12px 0 32px; }
+
+  @media (max-width: 520px) {
+    .header-inner { flex-direction: column; gap: 10px; }
+    .rating-table thead th,
+    .rating-table tbody td { padding: 10px 3px; }
+    .rating-table label { width: 30px; height: 30px; font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="badge">Népsoporttámogatás</span>
+    <div class="header-text">
+      <h1>Fókusz Oktatás<br>Visszajelzési lap</h1>
+      <p>Az Ön véleménye hozzájárul ahhoz, hogy programunk egyre jobb legyen. <strong>Köszönjük! 😊</strong></p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    A visszajelzések rögzítése és kiértékelése a támogatott szervezet felelőssége – sem személyes adatokat, sem e-mail-címeket nem szükséges megadni. <strong>A kérdőív teljesen anoním.</strong> Kizárólag az értékelési jelentést kell csatolni a támogatási jelentéshez.
+  </div>
+
+  <form id="feedback-form">
+
+    <!-- Q1 – Rating table -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">1</span>Hogyan értékeli oktatási kínálatunkat?</div>
+      <table class="rating-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Igen</th>
+            <th>Inkább<br>igen</th>
+            <th>Inkább<br>nem</th>
+            <th>Nem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1.1 -->
+          <tr>
+            <td><span class="sub-num">1.1</span>Bővítettem / elmélyítettem tudásomat</td>
+            <td><input type="radio" name="q1_1" id="q1_1_a" value="igen"><label for="q1_1_a">😊</label></td>
+            <td><input type="radio" name="q1_1" id="q1_1_b" value="inkabb_igen"><label for="q1_1_b">🙂</label></td>
+            <td><input type="radio" name="q1_1" id="q1_1_c" value="inkabb_nem"><label for="q1_1_c">😕</label></td>
+            <td><input type="radio" name="q1_1" id="q1_1_d" value="nem"><label for="q1_1_d">😞</label></td>
+          </tr>
+          <!-- 1.2 -->
+          <tr>
+            <td><span class="sub-num">1.2</span>Elértem képzési célomat</td>
+            <td><input type="radio" name="q1_2" id="q1_2_a" value="igen"><label for="q1_2_a">😊</label></td>
+            <td><input type="radio" name="q1_2" id="q1_2_b" value="inkabb_igen"><label for="q1_2_b">🙂</label></td>
+            <td><input type="radio" name="q1_2" id="q1_2_c" value="inkabb_nem"><label for="q1_2_c">😕</label></td>
+            <td><input type="radio" name="q1_2" id="q1_2_d" value="nem"><label for="q1_2_d">😞</label></td>
+          </tr>
+          <!-- 1.3 -->
+          <tr>
+            <td><span class="sub-num">1.3</span>Lehetőséget kaptam a rendszeres többnyelvű társalgásra</td>
+            <td><input type="radio" name="q1_3" id="q1_3_a" value="igen"><label for="q1_3_a">😊</label></td>
+            <td><input type="radio" name="q1_3" id="q1_3_b" value="inkabb_igen"><label for="q1_3_b">🙂</label></td>
+            <td><input type="radio" name="q1_3" id="q1_3_c" value="inkabb_nem"><label for="q1_3_c">😕</label></td>
+            <td><input type="radio" name="q1_3" id="q1_3_d" value="nem"><label for="q1_3_d">😞</label></td>
+          </tr>
+          <!-- 1.4 -->
+          <tr>
+            <td><span class="sub-num">1.4</span>Több kapcsolatot szereztem kultúrák között élő személyekkel</td>
+            <td><input type="radio" name="q1_4" id="q1_4_a" value="igen"><label for="q1_4_a">😊</label></td>
+            <td><input type="radio" name="q1_4" id="q1_4_b" value="inkabb_igen"><label for="q1_4_b">🙂</label></td>
+            <td><input type="radio" name="q1_4" id="q1_4_c" value="inkabb_nem"><label for="q1_4_c">😕</label></td>
+            <td><input type="radio" name="q1_4" id="q1_4_d" value="nem"><label for="q1_4_d">😞</label></td>
+          </tr>
+          <!-- 1.5 -->
+          <tr>
+            <td><span class="sub-num">1.5</span>Egyéb:</td>
+            <td><input type="radio" name="q1_5" id="q1_5_a" value="igen"><label for="q1_5_a">😊</label></td>
+            <td><input type="radio" name="q1_5" id="q1_5_b" value="inkabb_igen"><label for="q1_5_b">🙂</label></td>
+            <td><input type="radio" name="q1_5" id="q1_5_c" value="inkabb_nem"><label for="q1_5_c">😕</label></td>
+            <td><input type="radio" name="q1_5" id="q1_5_d" value="nem"><label for="q1_5_d">😞</label></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <!-- Q2 -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">2</span>Mi tetszett Önnek különösen?</div>
+      <textarea name="q2" placeholder="Írja ide gondolatait…"></textarea>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">3</span>Mi nem tetszett Önnek egyáltalán?</div>
+      <textarea name="q3" placeholder="Írja ide gondolatait…"></textarea>
+    </div>
+
+    <hr>
+
+    <!-- Q4 -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">4</span>Ajánlaná ezt a kínálatot barátainak / ismerőseinek?</div>
+      <div class="yn-group">
+        <input type="radio" name="q4" id="q4_igen" value="igen">
+        <label for="q4_igen">Igen</label>
+        <input type="radio" name="q4" id="q4_nem" value="nem">
+        <label for="q4_nem">Nem</label>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">5</span>Igénybe venné újra ezt vagy egy hasonló kínálatot?</div>
+      <div class="yn-group">
+        <input type="radio" name="q5" id="q5_igen" value="igen">
+        <label for="q5_igen">Igen</label>
+        <input type="radio" name="q5" id="q5_nem" value="nem">
+        <label for="q5_nem">Nem</label>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Q6 -->
+    <div class="q-block">
+      <div class="q-label"><span class="q-num">6</span>Egyéb javaslatok?</div>
+      <textarea name="q6" placeholder="Írja ide gondolatait…"></textarea>
+    </div>
+
+    <hr>
+
+    <!-- Demographics -->
+    <div class="demo-box">
+      <h2>Néhány kérdés Önről</h2>
+
+      <div class="demo-section">
+        <h3>Életkor</h3>
+        <div class="check-group">
+          <input type="checkbox" name="age" id="age_1" value="0-6">
+          <label for="age_1">0–6 éves</label>
+          <input type="checkbox" name="age" id="age_2" value="7-12">
+          <label for="age_2">7–12 éves</label>
+          <input type="checkbox" name="age" id="age_3" value="13-19">
+          <label for="age_3">13–19 éves</label>
+          <input type="checkbox" name="age" id="age_4" value="20-60">
+          <label for="age_4">20–60 éves</label>
+          <input type="checkbox" name="age" id="age_5" value="60+">
+          <label for="age_5">60 év felett</label>
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h3>Nem</h3>
+        <div class="check-group">
+          <input type="checkbox" name="gender" id="gen_f" value="no">
+          <label for="gen_f">Nő</label>
+          <input type="checkbox" name="gender" id="gen_m" value="ferfi">
+          <label for="gen_m">Férfi</label>
+          <input type="checkbox" name="gender" id="gen_d" value="diverz">
+          <label for="gen_d">Egyéb / nem kíván válaszolni</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-wrap">
+      <button type="submit">Visszajelzés elküldése →</button>
+    </div>
+
+  </form>
+
+  <!-- Success -->
+  <div id="success">
+    <h2>✓ Köszönjük visszajelzését!</h2>
+    <p>Válaszait sikeresen rögzítettük. Megjegyzései segítenek programunk fejlesztésében.</p>
+  </div>
+
+</main>
+
+<script>
+  // ── 1. Telepítés után ide kerül a Google Apps Script Web App URL ──
+  const SCRIPT_URL = "https://script.google.com/macros/s/IDE_ILLESZD_BE_A_SAJAT_URL-T/exec";
+
+  // ── 2. Checkbox → single-select viselkedés ──
+  document.querySelectorAll('.check-group').forEach(group => {
+    group.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          group.querySelectorAll('input[type="checkbox"]').forEach(other => {
+            if (other !== cb) other.checked = false;
+          });
+        }
+      });
+    });
+  });
+
+  // ── 3. Adatgyűjtés segédfüggvény ──
+  function getRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : "";
+  }
+  function getCheckbox(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.labels[0].textContent.trim() : "";
+  }
+
+  // ── 4. Form elküldése ──
+  document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = "Küldés folyamatban…";
+
+    const payload = {
+      q1_1:   getRadio("q1_1"),
+      q1_2:   getRadio("q1_2"),
+      q1_3:   getRadio("q1_3"),
+      q1_4:   getRadio("q1_4"),
+      q1_5:   getRadio("q1_5"),
+      q2:     document.querySelector('textarea[name="q2"]').value,
+      q3:     document.querySelector('textarea[name="q3"]').value,
+      q4:     getRadio("q4"),
+      q5:     getRadio("q5"),
+      q6:     document.querySelector('textarea[name="q6"]').value,
+      age:    getCheckbox("age"),
+      gender: getCheckbox("gender")
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method:  "POST",
+        body:    JSON.stringify(payload)
+        // A Google Apps Script nem fogad el custom Content-Type header-t CORS miatt
+      });
+      const json = await res.json();
+
+      if (json.status === "ok") {
+        document.getElementById('feedback-form').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(json.message || "Ismeretlen hiba");
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = "Visszajelzés elküldése →";
+      document.getElementById('send-error').style.display = 'block';
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
