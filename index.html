@@ -323,6 +323,25 @@
   #success h2 { font-family: 'Source Serif 4', serif; font-size: 22px; color: var(--yes); margin-bottom: 8px; }
   #success p  { color: var(--mid); font-size: 14px; }
 
+
+  #send-error {
+    display: none;
+    background: var(--white);
+    border-left: 4px solid var(--no);
+    padding: 22px 26px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 32px;
+    color: var(--mid);
+  }
+  #send-error strong {
+    display: block;
+    color: var(--no);
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+
   /* ── Divider ── */
   hr { border: none; border-top: 1px solid var(--rule); margin: 12px 0 32px; }
 
@@ -338,7 +357,7 @@
 
 <header>
   <div class="header-inner">
-    <span class="badge">Népsoporttámogatás</span>
+    <span class="badge">Népcsoporttámogatás</span>
     <div class="header-text">
       <h1>Fókusz Oktatás<br>Visszajelzési lap</h1>
       <p>Az Ön véleménye hozzájárul ahhoz, hogy programunk egyre jobb legyen. <strong>Köszönjük! 😊</strong></p>
@@ -353,7 +372,6 @@
 
   <form id="feedback-form">
 
-    <!-- Q1 – Rating table -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">1</span>Hogyan értékeli oktatási kínálatunkat?</div>
       <table class="rating-table">
@@ -367,7 +385,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- 1.1 -->
           <tr>
             <td><span class="sub-num">1.1</span>Bővítettem / elmélyítettem tudásomat</td>
             <td><input type="radio" name="q1_1" id="q1_1_a" value="igen"><label for="q1_1_a">😊</label></td>
@@ -375,7 +392,6 @@
             <td><input type="radio" name="q1_1" id="q1_1_c" value="inkabb_nem"><label for="q1_1_c">😕</label></td>
             <td><input type="radio" name="q1_1" id="q1_1_d" value="nem"><label for="q1_1_d">😞</label></td>
           </tr>
-          <!-- 1.2 -->
           <tr>
             <td><span class="sub-num">1.2</span>Elértem képzési célomat</td>
             <td><input type="radio" name="q1_2" id="q1_2_a" value="igen"><label for="q1_2_a">😊</label></td>
@@ -383,7 +399,6 @@
             <td><input type="radio" name="q1_2" id="q1_2_c" value="inkabb_nem"><label for="q1_2_c">😕</label></td>
             <td><input type="radio" name="q1_2" id="q1_2_d" value="nem"><label for="q1_2_d">😞</label></td>
           </tr>
-          <!-- 1.3 -->
           <tr>
             <td><span class="sub-num">1.3</span>Lehetőséget kaptam a rendszeres többnyelvű társalgásra</td>
             <td><input type="radio" name="q1_3" id="q1_3_a" value="igen"><label for="q1_3_a">😊</label></td>
@@ -391,7 +406,6 @@
             <td><input type="radio" name="q1_3" id="q1_3_c" value="inkabb_nem"><label for="q1_3_c">😕</label></td>
             <td><input type="radio" name="q1_3" id="q1_3_d" value="nem"><label for="q1_3_d">😞</label></td>
           </tr>
-          <!-- 1.4 -->
           <tr>
             <td><span class="sub-num">1.4</span>Több kapcsolatot szereztem kultúrák között élő személyekkel</td>
             <td><input type="radio" name="q1_4" id="q1_4_a" value="igen"><label for="q1_4_a">😊</label></td>
@@ -399,7 +413,6 @@
             <td><input type="radio" name="q1_4" id="q1_4_c" value="inkabb_nem"><label for="q1_4_c">😕</label></td>
             <td><input type="radio" name="q1_4" id="q1_4_d" value="nem"><label for="q1_4_d">😞</label></td>
           </tr>
-          <!-- 1.5 -->
           <tr>
             <td><span class="sub-num">1.5</span>Egyéb:</td>
             <td><input type="radio" name="q1_5" id="q1_5_a" value="igen"><label for="q1_5_a">😊</label></td>
@@ -413,13 +426,11 @@
 
     <hr>
 
-    <!-- Q2 -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">2</span>Mi tetszett Önnek különösen?</div>
       <textarea name="q2" placeholder="Írja ide gondolatait…"></textarea>
     </div>
 
-    <!-- Q3 -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">3</span>Mi nem tetszett Önnek egyáltalán?</div>
       <textarea name="q3" placeholder="Írja ide gondolatait…"></textarea>
@@ -427,7 +438,6 @@
 
     <hr>
 
-    <!-- Q4 -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">4</span>Ajánlaná ezt a kínálatot barátainak / ismerőseinek?</div>
       <div class="yn-group">
@@ -438,7 +448,6 @@
       </div>
     </div>
 
-    <!-- Q5 -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">5</span>Igénybe venné újra ezt vagy egy hasonló kínálatot?</div>
       <div class="yn-group">
@@ -451,7 +460,6 @@
 
     <hr>
 
-    <!-- Q6 -->
     <div class="q-block">
       <div class="q-label"><span class="q-num">6</span>Egyéb javaslatok?</div>
       <textarea name="q6" placeholder="Írja ide gondolatait…"></textarea>
@@ -459,7 +467,6 @@
 
     <hr>
 
-    <!-- Demographics -->
     <div class="demo-box">
       <h2>Néhány kérdés Önről</h2>
 
@@ -492,26 +499,32 @@
       </div>
     </div>
 
-    <!-- Submit -->
     <div class="submit-wrap">
       <button type="submit">Visszajelzés elküldése →</button>
     </div>
 
   </form>
 
-  <!-- Success -->
   <div id="success">
     <h2>✓ Köszönjük visszajelzését!</h2>
     <p>Válaszait sikeresen rögzítettük. Megjegyzései segítenek programunk fejlesztésében.</p>
   </div>
 
+  <div id="send-error">
+    <strong>A küldés nem sikerült.</strong>
+    <p>Kérjük, próbálja meg újra később, vagy jelezze az iskolának.</p>
+  </div>
+
 </main>
 
 <script>
-  // ── 1. Telepítés után ide kerül a Google Apps Script Web App URL ──
-  const SCRIPT_URL = "https://script.google.com/macros/s/IDE_ILLESZD_BE_A_SAJAT_URL-T/exec";
+  // ─────────────────────────────────────────────
+  // GOOGLE APPS SCRIPT WEB APP URL
+  // Beillesztve a megadott végpont URL címe
+  // ─────────────────────────────────────────────
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwD-3CCQkLLxtxOXmkhquzgz6SWFGM_ueNR8TbOwRMsdimoABVy7kGztH5D-vKTTTMA/exec";
 
-  // ── 2. Checkbox → single-select viselkedés ──
+  // ── Checkbox → single-select viselkedés ──
   document.querySelectorAll('.check-group').forEach(group => {
     group.querySelectorAll('input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', () => {
@@ -524,17 +537,36 @@
     });
   });
 
-  // ── 3. Adatgyűjtés segédfüggvény ──
+  // ── Segédfüggvények ──
   function getRadio(name) {
     const el = document.querySelector(`input[name="${name}"]:checked`);
     return el ? el.value : "";
   }
-  function getCheckbox(name) {
+
+  function getRadioLabel(name) {
     const el = document.querySelector(`input[name="${name}"]:checked`);
-    return el ? el.labels[0].textContent.trim() : "";
+    return el && el.labels && el.labels[0] ? el.labels[0].textContent.trim() : "";
   }
 
-  // ── 4. Form elküldése ──
+  function getCheckbox(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el && el.labels && el.labels[0] ? el.labels[0].textContent.trim() : "";
+  }
+
+  function showSuccess() {
+    document.getElementById('feedback-form').style.display = 'none';
+    document.getElementById('send-error').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showError() {
+    document.getElementById('success').style.display = 'none';
+    document.getElementById('send-error').style.display = 'block';
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+
+  // ── Form elküldése ──
   document.getElementById('feedback-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -543,40 +575,54 @@
     btn.textContent = "Küldés folyamatban…";
 
     const payload = {
-      q1_1:   getRadio("q1_1"),
-      q1_2:   getRadio("q1_2"),
-      q1_3:   getRadio("q1_3"),
-      q1_4:   getRadio("q1_4"),
-      q1_5:   getRadio("q1_5"),
-      q2:     document.querySelector('textarea[name="q2"]').value,
-      q3:     document.querySelector('textarea[name="q3"]').value,
-      q4:     getRadio("q4"),
-      q5:     getRadio("q5"),
-      q6:     document.querySelector('textarea[name="q6"]').value,
-      age:    getCheckbox("age"),
+      source: "kerdoiv.magyariskola.at",
+      formTitle: "Fókusz Oktatás – Visszajelzési lap",
+
+      q1_1: getRadio("q1_1"),
+      q1_1_label: "Bővítettem / elmélyítettem tudásomat",
+
+      q1_2: getRadio("q1_2"),
+      q1_2_label: "Elértem képzési célomat",
+
+      q1_3: getRadio("q1_3"),
+      q1_3_label: "Lehetőséget kaptam a rendszeres többnyelvű társalgásra",
+
+      q1_4: getRadio("q1_4"),
+      q1_4_label: "Több kapcsolatot szereztem kultúrák között élő személyekkel",
+
+      q1_5: getRadio("q1_5"),
+      q1_5_label: "Egyéb",
+
+      q2: document.querySelector('textarea[name="q2"]').value.trim(),
+      q3: document.querySelector('textarea[name="q3"]').value.trim(),
+      q4: getRadio("q4"),
+      q5: getRadio("q5"),
+      q6: document.querySelector('textarea[name="q6"]').value.trim(),
+
+      age: getCheckbox("age"),
       gender: getCheckbox("gender")
     };
 
     try {
-      const res = await fetch(SCRIPT_URL, {
-        method:  "POST",
-        body:    JSON.stringify(payload)
-        // A Google Apps Script nem fogad el custom Content-Type header-t CORS miatt
-      });
-      const json = await res.json();
-
-      if (json.status === "ok") {
-        document.getElementById('feedback-form').style.display = 'none';
-        document.getElementById('success').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        throw new Error(json.message || "Ismeretlen hiba");
+      if (!SCRIPT_URL || SCRIPT_URL.includes("IDE_ILLESZD_BE")) {
+        throw new Error("Hiányzik a Google Apps Script Web App URL.");
       }
+
+      // A no-cors mód a Google Apps Script Web App és külső domain közötti
+      // böngészős CORS problémákat kerüli meg. A választ emiatt nem olvassuk ki.
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload)
+      });
+
+      showSuccess();
+
     } catch (err) {
+      console.error(err);
       btn.disabled = false;
       btn.textContent = "Visszajelzés elküldése →";
-      document.getElementById('send-error').style.display = 'block';
-      console.error(err);
+      showError();
     }
   });
 </script>
