@@ -8,8 +8,8 @@
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
 
   :root {
-    --red:       #C0392B;
-    --red-light: #f5e9e8;
+    --red:       #3A6F7D;
+    --red-light: #E8F2F3;
     --ink:       #1a1a1a;
     --mid:       #555;
     --rule:      #d4d0cb;
@@ -43,6 +43,45 @@
   /* ── Intro card ── */
   .intro { background: var(--white); border-left: 4px solid var(--red); padding: 18px 22px; margin-bottom: 40px; font-size: 14px; color: var(--mid); }
   .intro strong { color: var(--ink); }
+
+
+
+  /* ── Privacy / GDPR ── */
+  .privacy-card { background: var(--white); border: 1.5px solid var(--rule); border-radius: 10px; padding: 24px 24px 22px; margin: -16px 0 40px; box-shadow: 0 10px 30px rgba(26,26,26,.04); }
+  .privacy-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--red-light); color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .privacy-card h2 { font-family: 'Source Serif 4', serif; font-size: 21px; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .privacy-card p { color: var(--mid); font-size: 14px; margin-bottom: 14px; }
+  .privacy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
+  .privacy-item { background: #fbfaf7; border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; font-size: 13px; color: var(--mid); }
+  .privacy-item strong { display: block; color: var(--ink); margin-bottom: 3px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  .privacy-card details { border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 8px; }
+  .privacy-card summary { cursor: pointer; color: var(--red); font-weight: 700; font-size: 14px; }
+  .privacy-card ul { margin: 14px 0 0 18px; color: var(--mid); font-size: 13.5px; }
+  .privacy-card li { margin-bottom: 9px; }
+  .privacy-card a { color: var(--red); font-weight: 600; text-decoration: none; }
+  .privacy-card a:hover { text-decoration: underline; }
+  .privacy-ack { background: var(--white); border: 1.5px solid var(--rule); border-radius: 8px; padding: 16px 18px; margin: 0 0 26px; display: flex; align-items: flex-start; gap: 12px; color: var(--mid); font-size: 13.5px; text-align: left; }
+  .privacy-ack input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--red); flex-shrink: 0; }
+  .privacy-ack strong { color: var(--ink); }
+
+  /* ── Event card ── */
+  .event-card { background: linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%); border: 1.5px solid var(--rule); border-radius: 10px; padding: 26px 24px; margin: 42px 0 0; text-align: center; }
+  .event-card h2 { font-family: 'Source Serif 4', serif; font-size: 24px; color: var(--red); margin-bottom: 8px; }
+  .event-card p { color: var(--mid); font-size: 14px; margin-bottom: 10px; }
+  .event-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 18px 0 20px; text-align: left; }
+  .event-meta div { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; font-size: 13px; color: var(--mid); }
+  .event-meta strong { display: block; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  .event-button { display: inline-flex; align-items: center; justify-content: center; background: var(--red); color: var(--white); text-decoration: none; padding: 12px 26px; border-radius: 4px; font-weight: 700; font-size: 14px; letter-spacing: .03em; }
+  .event-button:hover { background: #2F5F6B; }
+
+  /* ── Footer ── */
+  .site-footer { background: var(--white); border-top: 1px solid var(--rule); padding: 28px 24px 36px; color: var(--mid); font-size: 12.5px; }
+  .footer-inner { max-width: 720px; margin: 0 auto; }
+  .site-footer strong { color: var(--ink); }
+  .footer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin-top: 16px; }
+  .footer-small { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .site-footer a { color: var(--red); text-decoration: none; font-weight: 600; }
+  .site-footer a:hover { text-decoration: underline; }
 
   /* ── Section headings ── */
   .q-block { margin-bottom: 36px; }
@@ -87,7 +126,7 @@
   /* ── Submit & Status ── */
   .submit-wrap { text-align: center; margin-top: 10px; }
   button[type="submit"] { background: var(--red); color: var(--white); border: none; padding: 14px 48px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; border-radius: 4px; cursor: pointer; letter-spacing: .04em; transition: background .15s, transform .1s; }
-  button[type="submit"]:hover { background: #a93226; }
+  button[type="submit"]:hover { background: #2F5F6B; }
   button[type="submit"]:active { transform: scale(.98); }
   
   #success { display: none; background: var(--white); border-left: 4px solid var(--yes); padding: 28px 32px; text-align: center; border-radius: 4px; margin-top: 32px; }
@@ -104,6 +143,8 @@
     .header-inner { flex-direction: column; gap: 10px; }
     .rating-table thead th, .rating-table tbody td { padding: 10px 3px; }
     .rating-table label { width: 30px; height: 30px; font-size: 17px; }
+    .privacy-grid, .event-meta, .footer-grid { grid-template-columns: 1fr; }
+    .privacy-card, .event-card { padding: 20px 18px; }
   }
 </style>
 </head>
@@ -121,8 +162,37 @@
 
 <main>
   <div class="intro">
-    A visszajelzések rögzítése és kiértékelése a támogatott szervezet felelőssége – sem személyes adatokat, sem e-mail-címeket nem szükséges megadni. <strong>A kérdőív teljesen anoním.</strong> Kizárólag az értékelési jelentést kell csatolni a támogatási jelentéshez.
+    <p>A visszajelzések rögzítése és kiértékelése a támogatott szervezet felelőssége – sem személyes adatokat, sem e-mail-címeket nem szükséges megadni. <strong>A kérdőív teljesen anoním.</strong> Kizárólag az értékelési jelentést kell csatolni a támogatási jelentéshez.</p>
+    <p style="margin-top: 12px;"><strong>Fontos kitöltési útmutató:</strong> A kérdőívet mindig a képzésben vagy programon részt vevő személy nevében kérjük kitölteni. Gyermekprogram, óvodai vagy iskolai foglalkozás esetén a szülő / gondviselő a gyermeke nevében válaszol. Felnőttképzésben vagy felnőtteknek szóló programon résztvevők saját nevükben töltik ki. Ezért az életkornál mindig a résztvevő életkorát kell megjelölni: például óvodás gyermek esetén a 3–6 éves kategóriát.</p>
   </div>
+
+  <section class="privacy-card" aria-labelledby="privacy-title">
+    <div class="privacy-eyebrow">Adatvédelem röviden</div>
+    <h2 id="privacy-title">Anonim visszajelzés, személyes adatok nélkül</h2>
+    <p>Ez a kérdőív a Bécsi Magyar Iskola 2026/27-es tanévének előkészítését segíti. A cél az, hogy a szülőknek és a gyerekeknek pontosan olyan foglalkozásokat, szakmai csapatot és eszközöket tudjunk tervezni, amelyekre valódi igény van.</p>
+    <p><strong>A form nem kér nevet, e-mail-címet vagy más azonosító adatot. Saját cookie-t nem használ, és az űrlap üzemeltetője nem ment IP-címet.</strong> Kérjük, a szabad szöveges mezőkbe se írjon be nevet, telefonszámot, e-mail-címet vagy más személyes adatot.</p>
+
+    <div class="privacy-grid" aria-label="Adatvédelmi összefoglaló">
+      <div class="privacy-item"><strong>Kitöltési határidő</strong>2026. június 21., az iskola nyárzáró eseményéig.</div>
+      <div class="privacy-item"><strong>Beküldés</strong>Google Apps Script továbbítja az office@magyariskola.at címre.</div>
+      <div class="privacy-item"><strong>Belső feldolgozás</strong>Bajka Kinga Csengele és az általa közvetlenül kijelölt személyek.</div>
+      <div class="privacy-item"><strong>Felhasználás</strong>Csak összesített, anonim kiértékelés és 2026/27-es tervezés.</div>
+    </div>
+
+    <details>
+      <summary>Részletes GDPR / DSGVO tájékoztató megnyitása</summary>
+      <ul>
+        <li><strong>Adatkezelő:</strong> Ausztriai Magyar Egyesületek és Szervezetek Központi Szövetsége / Zentralverband Ungarischer Vereine und Organisationen in Österreich, ZVR-szám: 079797621, A-1010 Wien, Schwedenplatz 2, bejárat: Laurenzerberg 5 / 1. em., 8–9. ajtó, e-mail: <a href="mailto:office@magyariskola.at">office@magyariskola.at</a>.</li>
+        <li><strong>A kérdőív célja:</strong> a 2026/27-es tanévre való felkészülés, az oktatási és közösségi programok igényalapú tervezése, valamint a szükséges szakmai csapat és eszközök beszerzésének előkészítése.</li>
+        <li><strong>Adatkategóriák:</strong> anonim értékelések, szabad szöveges javaslatok, valamint nem azonosító korcsoport- és nemi kategóriák. A kérdőív nem kér különleges adatot, nevet, e-mail-címet, telefonszámot vagy pontos lakcímet.</li>
+        <li><strong>Jogalap:</strong> amennyiben a válaszok nem azonosíthatók, azok nem minősülnek személyes adatnak. Ha a kitöltő mégis személyes adatot ír be a szabad szöveges mezőkbe, annak kezelése kizárólag a kérdőív céljához kötötten, önkéntes közlés alapján, a GDPR 6. cikk (1) bekezdés a) pontja szerinti hozzájárulás alapján történik; a hozzájárulás bármikor visszavonható az office@magyariskola.at címen.</li>
+        <li><strong>Címzettek és hozzáférés:</strong> a beérkező anonim válaszokat Bajka Kinga Csengele és az általa közvetlenül kijelölt személyek értékelhetik ki. A form technikai beküldését Google Apps Script végzi, amely az adatokat az <a href="mailto:office@magyariskola.at">office@magyariskola.at</a> címre továbbítja.</li>
+        <li><strong>Megőrzés:</strong> a részletes válaszokat a 2026/27-es tanév előkészítéséhez szükséges kiértékelésig, legkésőbb 2026. szeptember 30-ig célszerű megőrizni. Ezt követően csak összesített, személyhez nem köthető statisztika és szakmai következtetés maradhat meg.</li>
+        <li><strong>Nincs hírlevél, profilalkotás vagy automatizált döntés:</strong> a válaszokat nem használjuk marketingre, nem kapcsoljuk össze más adatbázissal, és azok alapján nem történik automatizált egyedi döntéshozatal.</li>
+        <li><strong>Érintetti jogok:</strong> amennyiben a válasz mégis személyhez köthető adatot tartalmaz, kérhető tájékoztatás, helyesbítés, törlés, az adatkezelés korlátozása, tiltakozás, illetve a hozzájárulás visszavonása az <a href="mailto:office@magyariskola.at">office@magyariskola.at</a> címen. Panasz esetén az Osztrák Adatvédelmi Hatósághoz lehet fordulni: Österreichische Datenschutzbehörde, Barichgasse 40–42, 1030 Wien.</li>
+      </ul>
+    </details>
+  </section>
 
   <form id="feedback-form">
     <input type="text" name="b_trap" id="b_trap" class="elon-trap" tabindex="-1" autocomplete="off">
@@ -215,12 +285,13 @@
     <hr>
 
     <div class="demo-box">
-      <h2>Néhány kérdés Önről</h2>
+      <h2>Néhány kérdés a résztvevőről</h2>
 
       <div class="demo-section">
-        <h3>Életkor</h3>
+        <h3>A résztvevő életkora</h3>
         <div class="radio-group">
-          <input type="radio" name="age" id="age_1" value="0-6"><label for="age_1">0–6 éves</label>
+          <input type="radio" name="age" id="age_0" value="0-3"><label for="age_0">0–3 éves</label>
+          <input type="radio" name="age" id="age_1" value="3-6"><label for="age_1">3–6 éves</label>
           <input type="radio" name="age" id="age_2" value="7-12"><label for="age_2">7–12 éves</label>
           <input type="radio" name="age" id="age_3" value="13-19"><label for="age_3">13–19 éves</label>
           <input type="radio" name="age" id="age_4" value="20-60"><label for="age_4">20–60 éves</label>
@@ -229,13 +300,20 @@
       </div>
 
       <div class="demo-section">
-        <h3>Nem</h3>
+        <h3>A résztvevő neme</h3>
         <div class="radio-group">
           <input type="radio" name="gender" id="gen_f" value="no"><label for="gen_f">Nő</label>
           <input type="radio" name="gender" id="gen_m" value="ferfi"><label for="gen_m">Férfi</label>
           <input type="radio" name="gender" id="gen_d" value="diverz"><label for="gen_d">Egyéb / nem kíván válaszolni</label>
         </div>
       </div>
+    </div>
+
+
+
+    <div class="privacy-ack">
+      <input type="checkbox" name="privacy_ack" id="privacy_ack" required>
+      <label for="privacy_ack"><strong>Elolvastam és tudomásul vettem az anonim adatvédelmi tájékoztatót.</strong><br>Kérjük, csak akkor küldje el a kérdőívet, ha elfogadja, hogy válaszait anonim, összesített formában a 2026/27-es tanév előkészítéséhez használjuk fel.</label>
     </div>
 
     <div class="submit-wrap">
@@ -253,7 +331,32 @@
     <p>Kérjük, próbálja meg újra később, vagy jelezze az iskolának.</p>
   </div>
 
+  <section class="event-card" aria-labelledby="event-title">
+    <h2 id="event-title">Találkozunk az évzárónkon!</h2>
+    <p><strong>Nyár Ünnep! – BMI Tanévzáró</strong><br>Szabadtéri családi délután a Bécsi Magyar Iskolával és a Regélő Fehér Táltos dobcsapatával.</p>
+    <div class="event-meta">
+      <div><strong>Időpont</strong>2026. június 20., szombat, 14:00–16:00</div>
+      <div><strong>Helyszín</strong>DIE JUNGE BOX ASPERN, Asperner Heldenplatz 9, 1220 Wien</div>
+      <div><strong>BMI családoknak</strong>Az idei tanévben résztvevő gyerekeknek és családtagjaiknak díjmentes.</div>
+      <div><strong>Program</strong>Dobcsapat, közös zenei élmény, nyári barkácsműhely, arcfestés, büfé és családi találkozás.</div>
+    </div>
+    <a class="event-button" href="https://www.magyariskola.at/event-details/nyar-unnep-bmi-tanevzaro?lang=en-GB" target="_blank" rel="noopener">Regisztráció az évzáróra →</a>
+  </section>
+
 </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p><strong>Ausztriai Magyar Egyesületek és Szervezetek Központi Szövetsége</strong><br>Zentralverband Ungarischer Vereine und Organisationen in Österreich<br>ZVR-szám / ZVR-Zahl: 079797621</p>
+    <div class="footer-grid">
+      <div><strong>Cím</strong><br>A-1010 Bécs / Wien, Schwedenplatz 2<br>Bejárat: Laurenzerberg 5 / 1. emelet, 8–9. ajtó</div>
+      <div><strong>Kapcsolat</strong><br>Tel.: <a href="tel:+436503312090">+43 650 3312 090</a><br>E-mail: <a href="mailto:office@magyariskola.at">office@magyariskola.at</a></div>
+      <div><strong>BMI Elternverein</strong><br>Bank: Raiffeisen<br>IBAN: AT82 3200 0099 1164 4168<br>BIC/SWIFT: RLNWATWW</div>
+      <div><strong>Adatvédelmi kapcsolattartás</strong><br>Kérdés vagy törlési kérés esetén írjon az <a href="mailto:office@magyariskola.at">office@magyariskola.at</a> címre.</div>
+    </div>
+    <p class="footer-small">A kérdőív anonim visszajelzésre készült. Kérjük, a szabad szöveges mezőkben ne adjon meg személyes vagy különleges adatot.</p>
+  </div>
+</footer>
 
 <script>
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwD-3CCQkLLxtxOXmkhquzgz6SWFGM_ueNR8TbOwRMsdimoABVy7kGztH5D-vKTTTMA/exec";
@@ -305,7 +408,9 @@
       q5: getRadioValue("q5"),
       q6: document.querySelector('textarea[name="q6"]').value.trim(),
       age: getRadioLabelText("age"),
-      gender: getRadioLabelText("gender")
+      gender: getRadioLabelText("gender"),
+      privacy_ack: document.getElementById("privacy_ack").checked ? "igen" : "nem",
+      formDeadline: "2026. június 21."
     };
 
     try {
